@@ -23,6 +23,9 @@ public class FidexioLoginPage {
     @FindBy(xpath = "//div[.='Congratulations, your inbox is empty']")
     public WebElement logInCongrats;
 
+    @FindBy(xpath = "//p[normalize-space(.)='Wrong login/password']")
+    public WebElement wrongLogInMsg;
+
 
 
 }

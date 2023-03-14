@@ -34,6 +34,19 @@ public class LoginFunctionalityStepDefinitions {
         Assert.assertTrue(FidexioLoginPage.logInCongrats.isDisplayed());
     }
 
+    @When("user enters valid {string} or valid {string} with an invalid email or password")
+    public void userEntersValidOrValidWithAnInvalidEmailOrPassword(String arg0, String arg1) {
+        FidexioLoginPage.emailBox.sendKeys(arg0);
+        FidexioLoginPage.passwordBox.sendKeys(arg1);
+    }
+
+    @Then("Wrong login or password should be displayed")
+    public void wrongLoginPasswordShouldBeDisplayed() {
+        FidexioLoginPage.logInBtn.click();
+
+        Assert.assertTrue(FidexioLoginPage.wrongLogInMsg.isDisplayed());
+    }
+
     @When("user enters only an {string} or {string}")
     public void user_enters_only_an_or(String email, String password) {
         FidexioLoginPage.emailBox.sendKeys(email);
@@ -55,6 +68,10 @@ public class LoginFunctionalityStepDefinitions {
             System.out.println("hello2");
             Assert.assertEquals("Please fill in this field.",FidexioLoginPage.emailBox.getAttribute("validationMessage"));
         }
+
+
+
+
 
     }
 
