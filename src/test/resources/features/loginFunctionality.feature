@@ -14,7 +14,7 @@ Feature: Login Functionality
       | salesmanager15@info.com | salesmanager |
       | posmanager10@info.com   | posmanager   |
 
-@wip
+
   Scenario Outline: Wrong login/password should be displayed for invalid
   (valid username-invalid password and invalid username-valid password) credentials
     When user enters valid "<email>" or valid "<password>" with an invalid email or password
@@ -34,3 +34,7 @@ Feature: Login Functionality
       |                         | posmanager |
       |                         |            |
 
+    @wip
+  Scenario: User should see the password in bullet signs by default
+    When user enters password
+    Then password should be displayed as bullet signs

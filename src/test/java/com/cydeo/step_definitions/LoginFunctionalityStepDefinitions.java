@@ -68,15 +68,17 @@ public class LoginFunctionalityStepDefinitions {
             System.out.println("hello2");
             Assert.assertEquals("Please fill in this field.",FidexioLoginPage.emailBox.getAttribute("validationMessage"));
         }
-
-
-
-
-
     }
 
 
+    @When("user enters password")
+    public void userEntersPassword() {
 
+        FidexioLoginPage.passwordBox.sendKeys("password");
+    }
 
-
+    @Then("password should be displayed as bullet signs")
+    public void passwordShouldBeDisplayedAsBulletSigns() {
+        Assert.assertEquals("password",FidexioLoginPage.passwordBox.getAttribute("type"));
+    }
 }
