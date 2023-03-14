@@ -36,30 +36,23 @@ public class LoginFunctionalityStepDefinitions {
     public void user_enters_only_an_or(String email, String password) {
         FidexioLoginPage.emailBox.sendKeys(email);
         FidexioLoginPage.passwordBox.sendKeys(password);
-
-
     }
-
 
     @Then("user should see warning message to fill empty fields when trying to log in")
     public void userShouldSeeWarningMessageToFillEmptyFieldsWhenTryingToLogIn() throws InterruptedException {
 
         FidexioLoginPage.logInBtn.click();
 
-        Thread.sleep(2000);
+        Thread.sleep(1000);
 
-
-
-        if (FidexioLoginPage.emailBox.getText().isBlank()) {
-            System.out.println("FidexioLoginPage.emailBox.getText().isEmpty() = " + FidexioLoginPage.emailBox.getText().isEmpty());
-            String actual = FidexioLoginPage.emailBox.getAttribute("validationMessage");
-            Assert.assertEquals("Please fill in this field.", actual);
-        }else {
-            String actual = FidexioLoginPage.passwordBox.getAttribute("validationMessage");
-            System.out.println("actual = " + actual);
-            Assert.assertEquals("Please fill in this field.", actual);
+        if (FidexioLoginPage.passwordBox.getAttribute("value").isEmpty()){
+            System.out.println("hello1");
+            Assert.assertEquals("Please fill in this field.",FidexioLoginPage.passwordBox.getAttribute("validationMessage"));
         }
-
+        if (FidexioLoginPage.emailBox.getAttribute("value").isEmpty()){
+            System.out.println("hello2");
+            Assert.assertEquals("Please fill in this field.",FidexioLoginPage.emailBox.getAttribute("validationMessage"));
+        }
 
     }
 

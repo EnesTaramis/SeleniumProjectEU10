@@ -21,7 +21,7 @@ Feature: Login Functionality
     Examples:
       | email                   | password   |
      | salesmanager15@info.com |            |
-      #|                         | posmanager |
-      #|                         |            |
+      |                         | posmanager |
+      |                         |            |
 
 
