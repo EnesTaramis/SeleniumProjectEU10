@@ -10,6 +10,8 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
+import java.util.concurrent.TimeUnit;
+
 public class LoginFunctionalityStepDefinitions {
 
     FidexioLoginPage FidexioLoginPage = new FidexioLoginPage();
@@ -43,7 +45,7 @@ public class LoginFunctionalityStepDefinitions {
 
         FidexioLoginPage.logInBtn.click();
 
-        Thread.sleep(1000);
+        Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         if (FidexioLoginPage.passwordBox.getAttribute("value").isEmpty()){
             System.out.println("hello1");
