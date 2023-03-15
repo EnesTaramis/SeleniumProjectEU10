@@ -2,8 +2,10 @@ package com.cydeo.step_definitions;
 
 import com.cydeo.pages.FidexioHomePage;
 import com.cydeo.pages.FidexioLoginPage;
+import com.cydeo.pages.FidexioSessionExpiredPage;
 import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -13,7 +15,9 @@ public class LogoutFunctionalityStepDefinitions {
     FidexioHomePage FidexioHomePage = new FidexioHomePage();
     FidexioLoginPage FidexioLoginPage = new FidexioLoginPage();
 
-    @When("user is already logged in")
+    FidexioSessionExpiredPage FidexioSessionExpiredPage = new FidexioSessionExpiredPage();
+
+    @Given("user is already logged in")
     public void user_is_already_logged_in() {
         Driver.getDriver().get("https://qa.fidexio.com/");
         FidexioLoginPage.emailBox.sendKeys(ConfigurationReader.getProperty("SMemail"));
@@ -35,7 +39,22 @@ public class LogoutFunctionalityStepDefinitions {
     }
 
 
+    @Given("user has logged out")
+    public void userHasLoggedOut() {
+        FidexioHomePage.username.click();
+        FidexioHomePage.logoutBtn.click();
+        Assert.assertTrue(FidexioLoginPage.SignInBtn.isDisplayed());
+    }
 
+    @When("user presses the backspace button after loggin out")
+    public void userPressesTheBackspaceButtonAfterLogginOut() {
+        Driver.getDriver().navigate().back();
+    }
 
+    @Then("user can not go to the homepage again")
+    public void userCanNotGoToTheHomepageAgain() {
 
+        Assert.assertTrue(FidexioSessionExpiredPage.sessionExpMsj.isDisplayed());
+
+    }
 }
