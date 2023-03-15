@@ -26,6 +26,9 @@ public class FidexioLoginPage {
     @FindBy(xpath = "//p[normalize-space(.)='Wrong login/password']")
     public WebElement wrongLogInMsg;
 
+    @FindBy (xpath = "//b[.='Sign in']")
+    public WebElement SignInBtn;
+
 
 
 }

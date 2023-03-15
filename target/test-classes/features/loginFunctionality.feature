@@ -5,6 +5,7 @@ Feature: Login Functionality
   Background:
     Given Fidexio webpage is open
 
+
   Scenario Outline: Both sales manager and pos manager should be able to login with valid credentials
     When user enters valid "<email>" and user enters valid "<password>"
     Then user should be able to login
@@ -39,7 +40,7 @@ Feature: Login Functionality
     When user enters password
     Then password should be displayed as bullet signs
 
-  @wip
+
   Scenario: Verify if the ‘Enter’ key of the keyboard is working correctly on the login page
     When user enters email and password
     Then user should be able to login in using the Enter key

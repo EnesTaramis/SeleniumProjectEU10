@@ -40,7 +40,7 @@ Feature: Login Functionality
     When user enters password
     Then password should be displayed as bullet signs
 
-  @wip
+
   Scenario: Verify if the ‘Enter’ key of the keyboard is working correctly on the login page
     When user enters email and password
     Then user should be able to login in using the Enter key
