@@ -8,6 +8,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
 import java.util.concurrent.TimeUnit;
@@ -80,5 +81,18 @@ public class LoginFunctionalityStepDefinitions {
     @Then("password should be displayed as bullet signs")
     public void passwordShouldBeDisplayedAsBulletSigns() {
         Assert.assertEquals("password",FidexioLoginPage.passwordBox.getAttribute("type"));
+    }
+
+    @When("user enters email and password")
+    public void userEntersEmailAndPassword() {
+        FidexioLoginPage.emailBox.sendKeys(ConfigurationReader.getProperty("SMemail"));
+        FidexioLoginPage.passwordBox.sendKeys(ConfigurationReader.getProperty("SMpassword"));
+
+    }
+
+    @Then("user should be able to login in using the Enter key")
+    public void userShouldBeAbleToLoginInUsingTheEnterKey() {
+        FidexioLoginPage.emailBox.sendKeys(Keys.ENTER);
+        Assert.assertTrue(FidexioLoginPage.logInCongrats.isDisplayed());
     }
 }

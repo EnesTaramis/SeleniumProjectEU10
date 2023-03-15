@@ -5,7 +5,6 @@ Feature: Login Functionality
   Background:
     Given Fidexio webpage is open
 
-
   Scenario Outline: Both sales manager and pos manager should be able to login with valid credentials
     When user enters valid "<email>" and user enters valid "<password>"
     Then user should be able to login
