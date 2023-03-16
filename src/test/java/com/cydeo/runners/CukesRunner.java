@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         features ="src/test/resources/features",
         glue = "com/cydeo/step_definitions",
         dryRun = false, //when true results will show snippets that are incomplete
-        tags = "@wip"
+        tags = ""
 )
 public class CukesRunner {
 }
