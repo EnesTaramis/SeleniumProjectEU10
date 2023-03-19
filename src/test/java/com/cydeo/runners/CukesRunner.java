@@ -8,12 +8,13 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         plugin = {"html:target/cucumber-reports.html",
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber",
+                "json:target/cucumber.json",
                 "rerun:target/rerun.txt"
         },
         features ="src/test/resources/features",
         glue = "com/cydeo/step_definitions",
         dryRun = false, //when true results will show snippets that are incomplete
-        tags = ""
+        tags = "@FID10-389"
 )
 public class CukesRunner {
 }
